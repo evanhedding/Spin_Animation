@@ -27,15 +27,7 @@ class ode():
         wdot = np.array([wx, wy, wz])
         xdot = np.append(np.reshape(Qdot, 9), wdot)
         return xdot
-
-    def unit_vector(vector):
-        return vector / np.linalg.norm(vector)
-
-    def angle_between(v1, v2):
-        v1_u = ode.unit_vector(v1)
-        v2_u = ode.unit_vector(v2)
-        return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
-
+    
     def calc(Q0, W0, J, hr, steps, time):
         a = np.reshape(Q0, 9)
         x = np.append(a, W0)
